@@ -1,1 +1,5 @@
+[2019-05-14 14:40:00] download flutter sdk
+[2019-05-14 14:40:00] flutter doctor
 [2019-05-14 14:40:00] flutter packages get
+[2019-05-14 14:40:00] add flutter plugin in android studio
+[2019-05-14 14:40:00] add dart plugin in android studio
