@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_research/data/repository.dart';
 import 'package:flutter_research/screen/vanilla/vanilla_screen.dart';
+import 'package:flutter_research/screen/bloc/user_bloc_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -33,7 +34,13 @@ class HomePage extends StatelessWidget {
 							RaisedButton(
 								child: const Text('Vanilla'),
 								onPressed: () {
-									OpenVanilla(context);
+									openVanilla(context);
+								},
+							),
+							RaisedButton(
+								child: const Text('Bloc'),
+								onPressed: () {
+									openUserBloc(context);
 								},
 							),
 						],
@@ -43,7 +50,11 @@ class HomePage extends StatelessWidget {
 		);
 	}
 	
-	void OpenVanilla(BuildContext context) {
+	void openVanilla(BuildContext context) {
 		Navigator.push(context, MaterialPageRoute(builder: (context) => VanillaScreen(_repository)));
+	}
+	
+	void openUserBloc(BuildContext context) {
+		Navigator.push(context, MaterialPageRoute(builder: (context) => UserBlocScreen(_repository)));
 	}
 }
