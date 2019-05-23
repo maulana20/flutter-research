@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_research/data/repository.dart';
 import 'package:flutter_research/screen/vanilla/vanilla_screen.dart';
 import 'package:flutter_research/screen/bloc/user_bloc_screen.dart';
+import 'package:flutter_research/screen/scoped_model/user_model_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -43,6 +44,12 @@ class HomePage extends StatelessWidget {
 									openUserBloc(context);
 								},
 							),
+							RaisedButton(
+								child: const Text('Scoped Model'),
+								onPressed: () {
+									openUserModel(context);
+								}
+							),
 						],
 					),
 				),
@@ -56,5 +63,9 @@ class HomePage extends StatelessWidget {
 	
 	void openUserBloc(BuildContext context) {
 		Navigator.push(context, MaterialPageRoute(builder: (context) => UserBlocScreen(_repository)));
+	}
+	
+	void openUserModel(BuildContext context) {
+		Navigator.push(context, MaterialPageRoute(builder: (context) => UserModelScreen(_repository)));
 	}
 }
