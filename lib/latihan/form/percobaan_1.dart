@@ -98,20 +98,23 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          SingleChildScrollView(
-            child: Container(
-              margin: EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  buildDropDownMenu("Kelas", Icons.book, classList),
-                  buildDropDownMenu("Jadwal", Icons.calendar_today, scheduleList),
-                  buildChecked(),
-                  buildButtonPhoto(),
-                  buildImagePhoto(),
-                  buildButtonSave()
-                ],
+          Column(
+            children: [
+              Expanded(
+                child: ListView(
+                  padding: EdgeInsets.all(10),
+                  children: [
+                    buildDropDownMenu("Kelas", Icons.book, classList),
+                    buildDropDownMenu(
+                        "Jadwal", Icons.calendar_today, scheduleList),
+                    buildChecked(),
+                    buildButtonPhoto(),
+                    buildImagePhoto(),
+                  ],
+                ),
               ),
-            ),
+              buildButtonSave()
+            ],
           ),
         ],
       ),
@@ -137,7 +140,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildChecked() {
     return CheckboxListTile(
-      activeColor: Colors.pink[300],
+      activeColor: Colors.blue[300],
       contentPadding: EdgeInsets.all(0),
       title: Text(
         "Tambah jadwal baru ?",
@@ -172,26 +175,29 @@ class _HomePageState extends State<HomePage> {
         borderRadius: BorderRadius.circular(5),
       ),
       child: Container(
-        width: 200,
-        height: 200,
+        width: 150,
+        height: 150,
         decoration: BoxDecoration(
           image: DecorationImage(
               image: NetworkImage(
                   "https://www.freeiconspng.com/uploads/no-image-icon-15.png"),
-              fit: BoxFit.none),
+              fit: BoxFit.contain),
         ),
       ),
     );
   }
 
   Widget buildButtonSave() {
-    return ButtonTheme(
-      minWidth: MediaQuery.of(context).size.width * 0.9,
-      child: RaisedButton(
-        color: Colors.deepOrange[500],
-        child: Text('SIMPAN', style: TextStyle(color: Colors.white)),
-        shape: StadiumBorder(),
-        onPressed: () {},
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: ButtonTheme(
+        minWidth: MediaQuery.of(context).size.width,
+        child: FlatButton(
+          color: Colors.brown,
+          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          child: Text('SIMPAN', style: TextStyle(color: Colors.white)),
+          onPressed: () {},
+        ),
       ),
     );
   }
